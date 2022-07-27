@@ -1,0 +1,28 @@
+<h1>New Article</h1>
+<div style="color:red">
+<% if @article.errors.any? %>
+<% @article.errors.full_messages.each do |error| %>
+<div><%= error %></div>
+<% end %>
+<% end %>
+</div>
+<%= form_with model: @article do |form|%>
+
+  <div>
+    <%= form.label :category_id %><br>
+    <%= form.select :category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}) %>
+  </div>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<h1><%= @article.title %></h1>
+<h1><%= @article.category.name rescue 'No Category for this article' %></h1>
+<p><%=  @article.body %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= button_to "Destroy", article_path(@article), method: :delete %></li>
+  <button id="delete">delete</button>
+</ul>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+  $(document).ready(function() {
+   $('#delete').on('click',function(){
+    id="<%= @article.id %>"
+    token=$('meta[name="csrf-token"]'). attr('content')
+    $.ajax({
+      url:'/articles/'+id,
+      method:"delete",
+      headers:{
+        'authenticity_token':token
+      },
+      success:function(data){
+
+      }
+
+    })
+   });
+  });
+  </script>
