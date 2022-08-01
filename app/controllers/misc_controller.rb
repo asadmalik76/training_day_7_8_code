@@ -1,5 +1,5 @@
-class MiscController < ApplicationController
-  def misc
+# frozen_string_literal: true
 
-  end
+class MiscController < ApplicationController
+  def misc; end
 end

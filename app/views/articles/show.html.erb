@@ -7,6 +7,17 @@
   <li><%= button_to "Destroy", article_path(@article), method: :delete %></li>
   <button id="delete">delete</button>
 </ul>
+
+<%= link_to "New Comment", [:new, @commentable, :comment] %>
+<br>
+
+<% @comments.each do |c| %>
+<%= c.content %>
+<br>
+<% end %>
+
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
